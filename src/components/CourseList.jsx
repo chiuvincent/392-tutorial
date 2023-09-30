@@ -12,7 +12,6 @@ const CourseList = ({courses}) => (
             </div>
         ) }
     </div>
-    
 );
   
 export default CourseList;
