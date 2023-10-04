@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CourseList from './CourseList';
+import CourseSelect from './CourseSelect';
 
 const terms = {
   Fall: "Fall",
@@ -26,8 +26,12 @@ const TermSelector = ({selection, setSelection}) => (
 );
 
 const Courses = ({selection, courses}) => (
-  <div className="card" >
-    <CourseList courses={Object.values(courses).filter(course => course.term === terms[selection])} />
+  <div>
+    {/* 1. Filter JSON to term we want 2. Pass filtered term into CourseList to be displayed */}
+    
+    <CourseSelect courses={Object.values(courses).filter(course => course.term === terms[selection])} />
+    {/* <CourseList courses={Object.values(courses).filter(course => course.term === terms[selection])} /> */}
+
   </div>
 );
 
