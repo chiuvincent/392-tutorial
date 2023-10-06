@@ -13,6 +13,9 @@ const Main = () => {
   if (isLoading) return <h1>Loading schedule data...</h1>;
   if (!schedule) return <h1>No schedule data found</h1>;
 
+  // Prof fix
+  Object.keys(schedule.courses).forEach(key => { schedule.courses[key].id = key })
+
   return (
     <div className="container">
       <Banner title={schedule.title} />

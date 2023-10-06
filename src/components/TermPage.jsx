@@ -28,10 +28,9 @@ const TermSelector = ({selection, setSelection}) => (
 const Courses = ({selection, courses}) => (
   <div>
     {/* 1. Filter JSON to term we want 2. Pass filtered term into CourseList to be displayed */}
-    
     <CourseSelect courses={Object.values(courses).filter(course => course.term === terms[selection])} />
-    {/* <CourseList courses={Object.values(courses).filter(course => course.term === terms[selection])} /> */}
 
+    {/* <CourseSelect courses={courses.filter((course) => course.term === terms[selection])} /> */}
   </div>
 );
 

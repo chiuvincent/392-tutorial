@@ -1,8 +1,14 @@
 import { useState } from "react";
 import CourseList from './CourseList';
+import Modal from './Modal';
+import Cart from "./Cart";
 
 const CourseSelect = ({courses}) => {
     const [selected, setSelected] = useState([]);
+
+    const [open, setOpen] = useState(false);
+    const openModal = () => setOpen(true);
+    const closeModal = () => setOpen(false);
   
     const toggleSelected = (item) => setSelected(
         selected.includes(item)
@@ -10,10 +16,16 @@ const CourseSelect = ({courses}) => {
         : [...selected, item]
     );
   
-    console.log(selected);
     return (
-        // <CourseList courses={courses} />
-        <CourseList courses={courses} selected={selected} toggleSelected={toggleSelected} />
+        <div>
+            {/* <button className="btn btn-outline-dark" onClick={openModal}><i className="bi bi-cart4"></i></button>
+            <Modal open={open} close={closeModal}>
+                <Cart selected={selected} />
+            </Modal> */}
+            <CourseList key={courses.id} courses={courses} selected={selected} toggleSelected={toggleSelected} />
+            
+        </div>
+        
     );
 };
   
