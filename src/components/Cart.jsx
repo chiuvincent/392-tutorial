@@ -1,7 +1,3 @@
-// import './Cart.css';
-
-// const formatPrice = new Intl.NumberFormat([], { style: 'currency', currency: 'USD' }).format;
-
 const Cart = ({selected, biglist}) => (
   <div className="cart">
     {
@@ -10,7 +6,6 @@ const Cart = ({selected, biglist}) => (
           <h2>The cart is empty</h2>
           <p>Please click to select courses.</p>
         </div>
-      // : <h2>{selected}</h2>
       : selected.map(id => (
         <div className="card">
           <div className="card-header">
@@ -18,7 +13,7 @@ const Cart = ({selected, biglist}) => (
           </div>
           <div className="card-body">
             <h5 className="card-title">{biglist.find(course => course.id === id).title}</h5>
-            <p className="card-text">{biglist.find(course => course.id === id).meets}</p>
+            <p className="card-text">{biglist.find(course => course.id === id).term} {biglist.find(course => course.id === id).meets}</p>
           </div>
         </div>
         ))

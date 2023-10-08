@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { outputUnselectables } from '../utilities/conflict'
 import CourseList from './CourseList';
 import Modal from './Modal';
 import Cart from "./Cart";
@@ -10,22 +11,42 @@ const CourseSelect = ({courses, biglist}) => {
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
   
-    const toggleSelected = (item) => setSelected(
-        selected.includes(item)
-        ? selected.filter(x => x !== item)
-        : [...selected, item]
-    );
+    const unselectables = outputUnselectables(selected, biglist);
+
+    // const toggleSelected = (item) => {
+    //     setSelected(
+    //         // unselectables.includes(item)
+    //         selected.includes(item)
+    //         ? selected.filter(x => x !== item)
+    //         : [...selected, item]
+    //     );
+    // };
+       
+    const toggleSelected = (item) => {
+        if (unselectables.includes(item)) {
+            return;
+        }
+      
+        setSelected((selected) => {
+            if (selected.includes(item)) {
+                return selected.filter((x) => x !== item);
+            } 
+            else {
+                return [...selected, item];
+            }
+        });
+    };
+      
+    // console.log(unselectables);
     
-    console.log(courses);
-    console.log(selected);
     return (
         <div>
             <button className="btn btn-outline-dark" onClick={openModal}><i className="bi bi-cart4"></i></button>
             <Modal open={open} close={closeModal}>
                 <Cart selected={selected} biglist={biglist}/>
             </Modal>
-            <CourseList key={courses.id} courses={courses} selected={selected} toggleSelected={toggleSelected} />
             
+            <CourseList courses={courses} selected={selected} unselectables={unselectables} toggleSelected={toggleSelected} />
         </div>
         
     );
