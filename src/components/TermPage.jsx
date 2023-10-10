@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Banner from './Banner';
 import CourseSelect from './CourseSelect';
 
 const terms = {
@@ -35,10 +36,11 @@ const Courses = ({selection, courses}) => (
   </div>
 );
 
-const TermPage = ({courses}) => {
+const TermPage = ({title, courses}) => {
   const [selection, setSelection] = useState(() => Object.keys(terms)[0]);
   return (
     <div>
+      <Banner title={title} />
       <TermSelector selection={selection} setSelection={setSelection} />
       <Courses selection={selection} courses={courses} />
     </div>

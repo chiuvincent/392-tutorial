@@ -12,15 +12,6 @@ const CourseSelect = ({courses, biglist}) => {
     const closeModal = () => setOpen(false);
   
     const unselectables = outputUnselectables(selected, biglist);
-
-    // const toggleSelected = (item) => {
-    //     setSelected(
-    //         // unselectables.includes(item)
-    //         selected.includes(item)
-    //         ? selected.filter(x => x !== item)
-    //         : [...selected, item]
-    //     );
-    // };
        
     const toggleSelected = (item) => {
         if (unselectables.includes(item)) {

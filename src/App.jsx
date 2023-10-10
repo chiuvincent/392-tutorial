@@ -1,10 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useJsonQuery } from './utilities/fetch';
-// import { useState } from "react";
-import Banner from './components/Banner';
-import TermPage from './components/TermPage';
+
+import Dispatcher from './components/Dispatcher';
+
 
 const Main = () => {
   const [schedule, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
@@ -18,8 +19,7 @@ const Main = () => {
 
   return (
     <div className="container">
-      <Banner title={schedule.title} />
-      <TermPage courses={schedule.courses} />
+      <Dispatcher title={schedule.title} courses={schedule.courses} />
     </div>
   );
 };
