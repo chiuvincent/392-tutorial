@@ -1,6 +1,6 @@
 // import { useDbUpdate } from '../utilities/firebase';
 import { useFormData } from '../utilities/useFormData'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const validateUserData = (key, val) => {
   switch (key) {
@@ -36,7 +36,7 @@ const CourseEditor = ({id, course}) => {
     console.log(id);
     console.log(course);
 //   const [update, result] = useDbUpdate(`/users/${user.id}`);
-  const [state, change] = useFormData(validateUserData, "course");
+  const [state, change] = useFormData(validateUserData, course);
   const submit = (evt) => {
     evt.preventDefault();
     if (!state.errors) {
