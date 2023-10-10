@@ -1,4 +1,5 @@
 import './Course.css';
+import { Link } from 'react-router-dom';
 
 const Course = ({ id, course, selected, unselectables, toggleSelected }) => {
   const isSelected = selected.includes(id);
@@ -13,6 +14,9 @@ const Course = ({ id, course, selected, unselectables, toggleSelected }) => {
 //   }
   return (
     <div className="course card m-1 p-2" onClick={() => toggleSelected(id)}>
+      <Link to={`/courses/${id}/edit`}>
+        <i className="bi bi-asterisk"></i>
+      </Link>
       <div className={selectableOrNot}>
         <h5 className="card-title">
           {course.term} CS {course.number}
