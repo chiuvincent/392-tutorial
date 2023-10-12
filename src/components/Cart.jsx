@@ -4,7 +4,7 @@ const Cart = ({selected, biglist}) => (
       selected.length === 0
       ? <div>
           <h2>The cart is empty</h2>
-          <p>Please click to select courses.</p>
+          <p>Please select courses by clicking.</p>
         </div>
       : selected.map(id => (
         <div className="card">

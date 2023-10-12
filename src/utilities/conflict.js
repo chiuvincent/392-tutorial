@@ -50,7 +50,7 @@ const dayOverlap = (course1, course2) => {
     return false;
 };
 
-const convertTimeToInt = (timeString) => {
+export const convertTimeToInt = (timeString) => {
     const hours = parseInt(timeString.split(":")[0], 10);
     const minutes = parseInt(timeString.split(":")[1], 10);
   
