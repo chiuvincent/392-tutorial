@@ -1,20 +1,16 @@
-import { useEffect, useState } from 'react';
 import { getDatabase, onValue, ref, update} from 'firebase/database';
-// ...
-const database = getDatabase(firebase);
-
 import { useCallback, useEffect, useState } from 'react';
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref, update } from 'firebase/database';
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCqy8l97tEWjvW3V1B0f9bMsMLFk9D4sWk",
-  authDomain: "maxtactoe.firebaseapp.com",
-  databaseURL: "https://maxtactoe.firebaseio.com",
-  projectId: "maxtactoe",
-  storageBucket: "maxtactoe.appspot.com",
-  messagingSenderId: "672040841619",
-  appId: "1:672040841619:web:e488e188d5b93db7753866"
+  apiKey: "AIzaSyBAqFJ86rtEunGoiy-NZKugTYHNX77oNbE",
+  authDomain: "tutorial-72236.firebaseapp.com",
+  databaseURL: "https://tutorial-72236-default-rtdb.firebaseio.com",
+  projectId: "tutorial-72236",
+  storageBucket: "tutorial-72236.appspot.com",
+  messagingSenderId: "794370293914",
+  appId: "1:794370293914:web:b65acc1b82a5f645ec1f23"
 };
 
 // Initialize Firebase
