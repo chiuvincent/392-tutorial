@@ -9,9 +9,6 @@ const Course = ({ id, course, selected, unselectables, toggleSelected }) => {
     isSelected ? 'selected' : isUnselectable ? 'unselectable' : ''
   }`;
 
-//   if (unselectables.includes(id)) {
-//     console.log("YES YES YES!");
-//   }
   return (
     <div className="course card m-1 p-2" onClick={() => toggleSelected(id)}>
       <Link to={`/courses/${id}/edit`}>

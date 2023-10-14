@@ -1,4 +1,4 @@
-// import { useDbUpdate } from '../utilities/firebase';
+import { useDbUpdate } from '../utilities/firebase';
 import { useFormData } from '../utilities/useFormData'
 import { useNavigate } from 'react-router-dom';
 import { convertTimeToInt } from '../utilities/conflict';
@@ -34,7 +34,6 @@ const legalMeetingTime = (input) => {
 };
 
 const validateCourseData = (key, val) => {
-  // console.log(key);
   
   switch (key) {
     case 'title':
@@ -66,9 +65,9 @@ const ButtonBar = ({message, disabled}) => {
 };
 
 const CourseEditor = ({id, course}) => {
-    // console.log(id);
-    // console.log(course);
-//   const [update, result] = useDbUpdate(`/users/${user.id}`);
+    console.log(id);
+    console.log(course);
+  const [update, result] = useDbUpdate(`/courses/${id}`);
   const [state, change] = useFormData(validateCourseData, course);
   const submit = (evt) => {
     evt.preventDefault();
@@ -81,8 +80,7 @@ const CourseEditor = ({id, course}) => {
     <form onSubmit={submit} noValidate className={state.errors ? 'was-validated' : null}>
       <InputField name="title" text="Title" state={state} change={change} />
       <InputField name="meets" text="Meets" state={state} change={change} />
-      {/* <ButtonBar message={result?.message} /> */}
-      <ButtonBar message={"add message here"} />
+      <ButtonBar message={result?.message} />
     </form>
   )
 };

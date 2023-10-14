@@ -31,8 +31,6 @@ const Courses = ({selection, courses}) => (
     {/* 1. Filter JSON to term we want 2. Pass filtered term into CourseList to be displayed */}
     <CourseSelect courses={Object.values(courses).filter(course => course.term === terms[selection])} 
                   biglist={Object.values(courses)} />
-
-    {/* <CourseSelect courses={courses.filter((course) => course.term === terms[selection])} /> */}
   </div>
 );
 
