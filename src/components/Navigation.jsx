@@ -1,4 +1,3 @@
-// import { NavLink } from "react-router-dom";
 import { signInWithGoogle, signOut, useAuthState } from "../utilities/firebase";
 
 const SignInButton = () => (
@@ -16,18 +15,18 @@ const SignOutButton = () => (
 const AuthButton = () => {
   const [user] = useAuthState();
   return user ? <SignOutButton /> : <SignInButton />;
+  // return user ? (
+  //   <div>
+  //     <SignOutButton />
+  //     <p>{user ? `${user.email} ${user.uid}` : "Unknown user"}</p>
+  //   </div>
+  // ) : (
+  //   <SignInButton />
+  // );
 };
-
-// const activation = ({ isActive }) => (isActive ? "active" : "inactive");
 
 const Navigation = () => (
   <nav className="d-flex">
-    {/* <NavLink to="/" className={activation} end>
-      Posts
-    </NavLink>
-    <NavLink to="/users" className={activation} end>
-      Users
-    </NavLink> */}
     <AuthButton />
   </nav>
 );
