@@ -1,7 +1,7 @@
-import { useDbUpdate } from '../utilities/firebase';
-import { useFormData } from '../utilities/useFormData'
-import { useNavigate } from 'react-router-dom';
-import { convertTimeToInt } from '../utilities/conflict';
+import { useDbUpdate } from "../utilities/firebase";
+import { useFormData } from "../utilities/useFormData";
+import { useNavigate } from "react-router-dom";
+import { convertTimeToInt } from "../utilities/conflict";
 
 const legalMeetingTime = (input) => {
   // check for empty string
@@ -34,39 +34,62 @@ const legalMeetingTime = (input) => {
 };
 
 const validateCourseData = (key, val) => {
-  
   switch (key) {
-    case 'title':
-      return val.length >= 2 ? '' : "Course title must be at least two characters.";
-    case 'meets':
-      return legalMeetingTime(val) ? '' : "Meeting time must be a legal meeting time.";
-    default: return '';
+    case "title":
+      return val.length >= 2
+        ? ""
+        : "Course title must be at least two characters.";
+    case "meets":
+      return legalMeetingTime(val)
+        ? ""
+        : "Meeting time must be a legal meeting time.";
+    default:
+      return "";
   }
 };
 
-const InputField = ({name, text, state, change}) => (
+const InputField = ({ name, text, state, change }) => (
   <div className="mb-3">
-    <label htmlFor={name} className="form-label">{text}</label>
-    <input className="form-control" id={name} name={name} 
-      defaultValue={state.values?.[name]} onChange={change} />
+    <label htmlFor={name} className="form-label">
+      {text}
+    </label>
+    <input
+      className="form-control"
+      id={name}
+      name={name}
+      defaultValue={state.values?.[name]}
+      onChange={change}
+    />
     <div className="invalid-feedback">{state.errors?.[name]}</div>
   </div>
 );
 
-const ButtonBar = ({message, disabled}) => {
+const ButtonBar = ({ message, disabled }) => {
   const navigate = useNavigate();
   return (
     <div className="d-flex">
-      <button type="button" className="btn btn-outline-dark me-2" onClick={() => navigate(-1)}>Cancel</button>
-      <button type="submit" className="btn btn-primary me-auto" disabled={disabled}>Submit</button>
+      <button
+        type="button"
+        className="btn btn-outline-dark me-2"
+        onClick={() => navigate(-1)}
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        className="btn btn-primary me-auto"
+        disabled={disabled}
+      >
+        Submit
+      </button>
       <span className="p-2">{message}</span>
     </div>
   );
 };
 
-const CourseEditor = ({id, course}) => {
-    console.log(id);
-    console.log(course);
+const CourseEditor = ({ id, course }) => {
+  console.log(id);
+  console.log(course);
   const [update, result] = useDbUpdate(`/courses/${id}`);
   const [state, change] = useFormData(validateCourseData, course);
   const submit = (evt) => {
@@ -77,12 +100,16 @@ const CourseEditor = ({id, course}) => {
   };
 
   return (
-    <form onSubmit={submit} noValidate className={state.errors ? 'was-validated' : null}>
+    <form
+      onSubmit={submit}
+      noValidate
+      className={state.errors ? "was-validated" : null}
+    >
       <InputField name="title" text="Title" state={state} change={change} />
       <InputField name="meets" text="Meets" state={state} change={change} />
       <ButtonBar message={result?.message} />
     </form>
-  )
+  );
 };
 
 export default CourseEditor;

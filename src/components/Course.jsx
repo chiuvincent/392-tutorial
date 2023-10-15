@@ -1,19 +1,24 @@
-import './Course.css';
-import { Link } from 'react-router-dom';
+import "./Course.css";
+import { Link } from "react-router-dom";
+import { useAuthState } from "../utilities/firebase";
 
 const Course = ({ id, course, selected, unselectables, toggleSelected }) => {
   const isSelected = selected.includes(id);
   const isUnselectable = unselectables.includes(id);
 
   const selectableOrNot = `card-body ${
-    isSelected ? 'selected' : isUnselectable ? 'unselectable' : ''
+    isSelected ? "selected" : isUnselectable ? "unselectable" : ""
   }`;
+
+  const [user] = useAuthState();
 
   return (
     <div className="course card m-1 p-2" onClick={() => toggleSelected(id)}>
-      <Link to={`/courses/${id}/edit`}>
-        <i className="bi bi-asterisk"></i>
-      </Link>
+      {user !== null ? (
+        <Link to={`/courses/${id}/edit`}>
+          <i className="bi bi-asterisk"></i>
+        </Link>
+      ) : null}
       <div className={selectableOrNot}>
         <h5 className="card-title">
           {course.term} CS {course.number}
