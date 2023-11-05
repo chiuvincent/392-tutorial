@@ -20,7 +20,11 @@ const Course = ({ id, course, selected, unselectables, toggleSelected }) => {
   // console.log(profile.user.uid);
 
   return (
-    <div className="course card m-1 p-2" onClick={() => toggleSelected(id)}>
+    <div
+      className="course card m-1 p-2"
+      data-cy="course"
+      onClick={() => toggleSelected(id)}
+    >
       {profile.user && profile.user.uid === "4pQsZH6AcXNW1rhVMqiRqLnTQwT2" && (
         <Link to={`/courses/${id}/edit`}>
           <i className="bi bi-asterisk"></i>
