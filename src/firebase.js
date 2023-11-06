@@ -26,7 +26,7 @@ if (!globalThis.EMULATION && import.meta.env.MODE === "development") {
   signInWithCredential(
     auth,
     GoogleAuthProvider.credential(
-      '{"sub": "qEvli4msW0eDz5mSVO6j3W7i8w1k", "email": "tester@gmail.com", "displayName":"Test User", "email_verified": true}'
+      '{"sub": "4RuQsupZRaffLwjoLw4zPRvkndbX", "email": "a@example.com", "displayName":"testUser", "email_verified": true}'
     )
   );
 
