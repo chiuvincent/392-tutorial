@@ -2,8 +2,10 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithCredential,
+  connectAuthEmulator,
+  getAuth,
 } from "firebase/auth";
-import { getDatabase } from "firebase/database";
+import { getDatabase, connectDatabaseEmulator } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBAqFJ86rtEunGoiy-NZKugTYHNX77oNbE",
