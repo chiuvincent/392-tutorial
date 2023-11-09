@@ -12,7 +12,7 @@
     "em:start": "firebase emulators:start --import=./saved-data --export-on-exit",
     "em:exec": "firebase emulators:exec --import=./saved-data 'npm start'",
     "em:execui": "firebase emulators:exec --ui --import=./saved-data 'npm start'",
-    "em:cy:open": "start-server-and-test em:exec http://127.0.0.1:5173 cy:open"
+    "em:cy:open": "start-server-and-test em:exec http://localhost:5173 cy:open"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.35.3",
